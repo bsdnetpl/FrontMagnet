@@ -1,0 +1,64 @@
+<div class="container mt-4">
+  <!-- Formularz wyboru daty -->
+  <div class="row mb-3">
+    <div class="col-md-4">
+      <label for="dateInput" class="form-label">Wybierz datę:</label>
+      <input type="date" #dateInput class="form-control">
+    </div>
+    <div class="col-md-2 d-flex align-items-end">
+      <button class="btn btn-primary w-100" (click)="loadData(dateInput.value)">
+        Pobierz dane
+      </button>
+    </div>
+  </div>
+
+  <!-- Debugowanie (sprawdzenie danych) 
+  <pre *ngIf="sprzedaz?.length">{{ sprzedaz | json }}</pre>-->
+
+  <!-- Tabela Bootstrap -->
+  <div *ngIf="sprzedaz?.length">
+    <table class="table table-bordered table-striped table-hover">
+      <thead class="table-dark">
+        <tr>
+          <th>ID</th>
+          <th>Nazwa</th>
+          <th>Cena</th>
+          <th>Zarobek</th>
+          <th>Ilość</th>
+          <th>Data</th>
+          <th>Czas</th>
+          <th>Stawka VAT</th>
+          <th>Cena Netto</th>
+          <th>Forma Płatności</th>
+          <th>Data Zakupu</th>
+          <th>Numer FV</th>
+          <th>Kod Produktu</th>
+          <th>Różnica VAT</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of sprzedaz">
+          <td>{{ item.id }}</td>
+          <td>{{ item.nazwa }}</td>
+          <td>{{ item.cena }}</td>
+          <td>{{ item.zarobek }}</td>
+          <td>{{ item.ilosc }}</td>
+          <td>{{ item.data }}</td>
+          <td>{{ item.czas }}</td>
+          <td>{{ item.stawkaVat }}</td>
+          <td>{{ item.cenaNetto }}</td>
+          <td>{{ item.formaPlatnosci }}</td>
+          <td>{{ item.dataZakupu }}</td>
+          <td>{{ item.numerFv }}</td>
+          <td>{{ item.kodProduktu }}</td>
+          <td>{{ item.roznicaVat }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Informacja, gdy brak danych -->
+  <div *ngIf="sprzedaz?.length === 0" class="alert alert-warning mt-3" role="alert">
+    Brak danych do wyświetlenia.
+  </div>
+</div>

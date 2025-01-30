@@ -1,0 +1,46 @@
+<div class="container mt-5">
+    <h2 class="mb-4">Lista Stanów</h2>
+  
+    <!-- Wskaźnik ładowania -->
+    <div *ngIf="isLoading" class="text-center">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Ładowanie...</span>
+      </div>
+    </div>
+  
+    <!-- Komunikat błędu -->
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+  
+    <!-- Tabela -->
+    <table *ngIf="!isLoading && !errorMessage" class="table table-bordered table-striped">
+      <thead class="table-primary">
+        <tr>
+          <th>ID</th>
+          <th>Nazwa</th>
+          <th>Kod Kreskowy</th>
+          <th>Ilość</th>
+          <th>Zarobek</th>
+          <th>Cena Netto</th>
+          <th>Stawka VAT</th>
+          <th>Data Zakupu</th>
+          <th>Numer FV</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let stan of stans">
+          <td>{{ stan.id }}</td>
+          <td>{{ stan.nazwa }}</td>
+          <td>{{ stan.kodKreskowy }}</td>
+          <td>{{ stan.ilosc }}</td>
+          <td>{{ stan.zarobek | currency:'PLN' }}</td>
+          <td>{{ stan.cenaNetto | currency:'PLN' }}</td>
+          <td>{{ stan.stawkaVat }}%</td>
+          <td>{{ stan.dataZakupu | date:'yyyy-MM-dd' }}</td>
+          <td>{{ stan.numerFv }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

@@ -1,0 +1,130 @@
+<div class="container mt-4">
+    <h2 class="text-center">Wyszukaj faktury</h2>
+  
+    <!-- Formularz wyszukiwania -->
+    <form (ngSubmit)="LoadData()" #searchForm="ngForm">
+      <div class="row">
+        <div class="col-md-5">
+          <label for="year" class="form-label">Rok</label>
+          <input type="number" id="year" class="form-control" [(ngModel)]="year" name="year" required min="2000" max="2100">
+          <div *ngIf="searchForm.controls['year']?.invalid && searchForm.controls['year']?.touched" class="text-danger">
+            Podaj poprawny rok (2000-2100).
+          </div>
+        </div>
+  
+        <div class="col-md-5">
+          <label for="month" class="form-label">Miesiąc</label>
+          <input type="number" id="month" class="form-control" [(ngModel)]="month" name="month" required min="1" max="12">
+          <div *ngIf="searchForm.controls['month']?.invalid && searchForm.controls['month']?.touched" class="text-danger">
+            Podaj poprawny miesiąc (1-12).
+          </div>
+        </div>
+  
+        <div class="col-md-2 d-flex align-items-end">
+          <button type="submit" class="btn btn-primary w-100" [disabled]="searchForm.invalid">Szukaj</button>
+        </div>
+      </div>
+    </form>
+  
+    <!-- Spinner ładowania -->
+    <div *ngIf="loading" class="text-center mt-3">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Ładowanie...</span>
+      </div>
+    </div>
+  
+    <!-- Tabela wyników -->
+    <div *ngIf="!loading && faktury && faktury.length > 0" class="mt-4">
+      <h4>Wyniki wyszukiwania</h4>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead class="table-dark">
+            <tr>
+              <th>Numer</th>
+              <th>Klient</th>
+              <th>Ulica</th>
+              <th>Kod Miasto</th>
+              <th>Kwota Brutto</th>
+              <th>NIP</th>
+              <th>Data</th>
+              <th>Data Wystawienia</th>
+              <th>Poz. Do Zap.</th>
+              <th>Zapłacono</th>
+              <th>Termin</th>
+              <th>Godzina</th>
+              <th>Dni Terminu</th>
+              <th>Odbiorca</th>
+              <th>Kod 1</th>
+              <th>Kod 2</th>
+              <th>GTU 1</th>
+              <th>GTU 2</th>
+              <th>GTU 3</th>
+              <th>GTU 4</th>
+              <th>GTU 5</th>
+              <th>GTU 6</th>
+              <th>GTU 7</th>
+              <th>GTU 8</th>
+              <th>GTU 9</th>
+              <th>GTU 10</th>
+              <th>GTU 11</th>
+              <th>GTU 12</th>
+              <th>GTU 13</th>
+              <th>Data Zapłaty</th>
+              <th>Czy Zgłoszono do KSeF</th>
+              <th>Data Zgłoszenia do KSeF</th>
+              <th>KSeF Reference Number</th>
+              <th>XML File</th>
+              <th>ID Faktury w KSeF</th>
+              <th>XML Content</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let fv of faktury">
+              <td>{{ fv?.Numer }}</td>
+              <td>{{ fv.Klient }}</td>
+              <td>{{ fv.Ulica }}</td>
+              <td>{{ fv.KodMiasto }}</td>
+              <td>{{ fv.KwotaBrut }}</td>
+              <td>{{ fv.Nip }}</td>
+              <td>{{ fv.Data }}</td>
+              <td>{{ fv.DataWystawienia }}</td>
+              <td>{{ fv.PozDoZap }}</td>
+              <td>{{ fv.Zaplacono }}</td>
+              <td>{{ fv.Termin }}</td>
+              <td>{{ fv.Godzina }}</td>
+              <td>{{ fv.DniTerminu }}</td>
+              <td>{{ fv.Odbiorca }}</td>
+              <td>{{ fv.Kod1 }}</td>
+              <td>{{ fv.Kod2 }}</td>
+              <td>{{ fv.Gtu1 }}</td>
+              <td>{{ fv.Gtu2 }}</td>
+              <td>{{ fv.Gtu3 }}</td>
+              <td>{{ fv.Gtu4 }}</td>
+              <td>{{ fv.Gtu5 }}</td>
+              <td>{{ fv.Gtu6 }}</td>
+              <td>{{ fv.Gtu7 }}</td>
+              <td>{{ fv.Gtu8 }}</td>
+              <td>{{ fv.Gtu9 }}</td>
+              <td>{{ fv.Gtu10 }}</td>
+              <td>{{ fv.Gtu11 }}</td>
+              <td>{{ fv.Gtu12 }}</td>
+              <td>{{ fv.Gtu13 }}</td>
+              <td>{{ fv.DataZaplaty }}</td>
+              <td>{{ fv.CzyZgloszonoDoKsef }}</td>
+              <td>{{ fv.DataZgloszneiaDoKsef }}</td>
+              <td>{{ fv.KsefReferenceNumber }}</td>
+              <td>{{ fv.XmlFile }}</td>
+              <td>{{ fv.IdentificationNumberOfInvoiceInKseF }}</td>
+              <td>{{ fv.XmlContent }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  
+    <!-- Komunikat, gdy nie znaleziono faktur -->
+    <div *ngIf="!loading && faktury?.length === 0" class="alert alert-warning mt-4 text-center">
+      Brak faktur dla podanego roku i miesiąca.
+    </div>
+  </div>
+  
