@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BazaFVService } from '../login/Servis/baza-fv.service';
+import { BazaFVService } from '../Servis/baza-fv.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms'; // Import FormsModule

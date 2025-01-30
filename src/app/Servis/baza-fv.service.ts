@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BazaFV } from '../../models/baza-fv';
+import { BazaFV } from '../models/baza-fv';
 import { Observable } from 'rxjs';
 
 @Injectable({

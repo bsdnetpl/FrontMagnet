@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from './Servis/auth.service';
+import { AuthService } from '../Servis/auth.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import {jwtDecode } from 'jwt-decode';

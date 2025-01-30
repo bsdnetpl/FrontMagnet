@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
-import { Stan } from '../../models/stan'; // Import interfejsu
+import { Stan } from '../models/stan'; // Import interfejsu
 @Injectable({
   providedIn: 'root'
 })

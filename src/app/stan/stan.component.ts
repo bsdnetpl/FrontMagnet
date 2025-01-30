@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Stan } from '../models/stan';
-import { StanService } from '../login/Servis/stan.service';
+import { StanService } from '../Servis/stan.service';
 import { CommonModule } from '@angular/common';
 
 @Component({

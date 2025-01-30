@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SprzedazService } from '../login/Servis/sprzedaz.service';
+import { SprzedazService } from '../Servis/sprzedaz.service';
 import { CommonModule } from '@angular/common';
 import { Sprzedaz } from '../models/sprzedaz';
 
